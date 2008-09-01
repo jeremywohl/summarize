@@ -1,0 +1,25 @@
+summarize
+---------
+
+Generate performance one-liners from Rails log input.  Reads output from :info or :debug log levels (the defaults).
+
+Usage:
+
+  # summarize < development.log
+  # summarize /some/path/production.log
+  # summarize --full_url /other/production.log
+
+Output looks like:
+
+  123.23.23.123 2006-05-05 10:59:42 | r 0.0--00  0% | db 0.00812 29% | 0.02726   36 r/s | 302 /some/uri
+  123.23.23.123 2006-05-05 10:59:43 | r 0.02059 55% | db 0.01246 33% | 0.03697   27 r/s | 200 /some/uri
+  123.23.23.123 2006-05-05 10:59:53 | r 0.00716 68% | db 0.00156 14% | 0.01048   95 r/s | 200 /some/uri
+  123.23.23.123 2006-05-05 10:59:57 | r 0.00727 72% | db 0.00109 10% | 0.01005   99 r/s | 200 /some/uri
+
+(with --full_url)
+  123.23.23.123 2006-05-05 10:59:58 | r 0.0--00  0% | db 0.01137 27% | 0.04104   24 r/s | 302 https://a.b.com/some/uri
+  123.23.23.123 2006-05-05 10:59:58 | r 0.0--00  0% | db 0.00064 24% | 0.00255  392 r/s | 302 https://a.b.com/some/uri
+  123.23.23.123 2006-05-05 10:59:59 | r 0.08411 79% | db 0.01929 18% | 0.10589    9 r/s | 200 https://a.b.com/some/uri
+  123.23.23.123 2006-05-05 11:00:01 | r 0.0--00  0% | db 0.00721 57% | 0.01250   79 r/s | 302 https://a.b.com/some/uri
+  123.23.23.123 2006-05-05 11:00:01 | r 0.02212 56% | db 0.01381 35% | 0.03932   25 r/s | 200 https://a.b.com/some/uri
+  123.23.23.123 2006-05-05 11:00:05 | r 0.00734 72% | db 0.00109 10% | 0.01011   98 r/s | 200 https://a.b.com/some/uri
